@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>workoutapp_API</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>b3315167-2356-4626-b12e-a29e79336815</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove=".github\**" />
+    <Compile Remove="ScaffoldedModels\**" />
+    <Content Remove=".github\**" />
+    <Content Remove="ScaffoldedModels\**" />
+    <EmbeddedResource Remove=".github\**" />
+    <EmbeddedResource Remove="ScaffoldedModels\**" />
+    <None Remove=".github\**" />
+    <None Remove="ScaffoldedModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.1" />
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="1.9.*" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
+</Project>
