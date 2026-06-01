@@ -1,0 +1,12 @@
+.page-edit-item main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-edit-item #workout-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: var(--bg-card);
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Generate personalized workouts, track exercises, and start your fitness journey with our interactive workout app."
+    />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../styles/profile.css">
+</head>
+
+<body>
+    <header>
+        <h1>My Profile</h1>
+        <div class="header-actions">
+            <button id="goBackButton" type="button">Go back</button>
+            <button id="logoutButton" type="button">Logout</button>
+        </div>
+    </header>
+
+    <main>
+
+        <section aria-labelledby="personalInfoTitle">
+            <h2 id="personalInfoTitle">Personal Information</h2>
+
+            <form id="profileForm">
+                <fieldset>
+                    <legend>Edit Profile</legend>
+
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age">
+
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight">
+
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height">
+
+                    <label for="experience">Experience Level</label>
+                    <select id="experience" name="experience">
+                        <option value="">Select</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+
+                    <button type="submit">Save Profile</button>
+                    <output id="profileMessage" role="alert"></output>
+                </fieldset>
+            </form>
+        </section>
+
+        <section aria-labelledby="goalsTitle">
+            <h2 id="goalsTitle">Training Goals</h2>
+
+            <form id="addGoalForm">
+                <fieldset>
+                    <legend>Add Goal</legend>
+
+                    <label for="goalTitle">Title</label>
+                    <input type="text" id="goalTitle" name="goalTitle">
+
+                    <label for="goalTarget">Target</label>
+                    <input type="text" id="goalTarget" name="goalTarget">
+
+                    <label for="goalDeadline">Deadline</label>
+                    <input type="date" id="goalDeadline" name="goalDeadline">
+
+                    <button type="submit">Add Goal</button>
+                    <output id="goalsMessage" role="alert"></output>
+                </fieldset>
+            </form>
+
+            <article id="trainingGoalsContainer"></article>
+        </section>
+
+        <section aria-labelledby="progressTitle">
+            <h2 id="progressTitle">Progress & Statistics</h2>
+
+            <article id="progressContainer"></article>
+            <article id="statisticsContainer"></article>
+        </section>
+
+        <section aria-labelledby="scheduleTitle">
+            <h2 id="scheduleTitle">Training Schedule</h2>
+
+            <form id="addScheduleForm">
+                <fieldset>
+                    <legend>Add Schedule</legend>
+
+                    <label for="scheduleDate">Date</label>
+                    <input type="date" id="scheduleDate" name="scheduleDate">
+
+                    <label for="scheduleType">Type</label>
+                    <input type="text" id="scheduleType" name="scheduleType">
+
+                    <label for="scheduleNotes">Notes</label>
+                    <textarea id="scheduleNotes" name="scheduleNotes"></textarea>
+
+                    <button type="submit">Add Schedule</button>
+                    <output id="scheduleMessage" role="alert"></output>
+                </fieldset>
+            </form>
+
+            <ul id="scheduleContainer"></ul>
+        </section>
+
+        <section aria-labelledby="achievementsTitle">
+            <h2 id="achievementsTitle">Achievements</h2>
+
+            <form id="addAchievementForm">
+                <fieldset>
+                    <legend>Add Achievement</legend>
+
+                    <label for="achievementText">Achievement</label>
+                    <input type="text" id="achievementText" name="achievementText">
+
+                    <button type="submit">Add</button>
+                    <output id="achievementsMessage" role="alert"></output>
+                </fieldset>
+            </form>
+
+            <ul id="achievementsContainer"></ul>
+        </section>
+
+        <section aria-labelledby="notesTitle">
+            <h2 id="notesTitle">Personal Notes</h2>
+
+            <form id="notesForm">
+                <fieldset>
+                    <legend>Add Note</legend>
+
+                    <label for="noteText">Note</label>
+                    <textarea id="noteText" name="noteText"></textarea>
+
+                    <button type="submit">Add Note</button>
+                    <output id="notesMessage" role="alert"></output>
+                </fieldset>
+            </form>
+
+            <ul id="notesContainer"></ul>
+        </section>
+    </main>
+    <script type="module" src="../scripts/ui/renderProfile.js"></script>
+</body>
+</html>

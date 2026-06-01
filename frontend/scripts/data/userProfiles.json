@@ -1,0 +1,166 @@
+[
+  {
+    "name": "Robin",
+    "email": "Robin@mail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Robin",
+      "age": "23",
+      "gender": "Male",
+      "weight": "78",
+      "height": "180",
+      "experience": "Intermediate",
+      "trainingGoals": [
+        { "title": "Lose 5kg", "target": "73kg", "deadline": "2026-06-01", "progress": 20 }
+      ],
+      "sessions": [],
+      "progress": {
+        "weightHistory": [
+          { "date": "2025-01-01", "weight": 80 },
+          { "date": "2025-02-01", "weight": 78 }
+        ],
+        "strengthHistory": [],
+        "cardioHistory": []
+      },
+      "achievements": ["Trained 30 days in a row"],
+      "schedule": [],
+      "statistics": {
+        "totalSessions": 12,
+        "totalMinutes": 540,
+        "mostTrainedMuscleGroup": "Chest",
+        "averageSessionsPerWeek": 3
+      },
+      "personalNotes": [
+        { "date": "2025-02-01", "text": "Feeling stronger in bench press." }
+      ]
+    }
+  },
+  {
+    "name": "Abdalle",
+    "email": "Abdalle@mail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Abdalle",
+      "age": "25",
+      "gender": "Male",
+      "weight": "85",
+      "height": "185",
+      "experience": "Advanced",
+      "trainingGoals": [
+        { "title": "Increase Deadlift", "target": "200kg", "deadline": "2026-12-31", "progress": 50 }
+      ],
+      "sessions": [],
+      "progress": {
+        "weightHistory": [],
+        "strengthHistory": [
+          { "date": "2025-01-10", "exercise": "Deadlift", "value": 180 }
+        ],
+        "cardioHistory": []
+      },
+      "achievements": ["Deadlift 180kg"],
+      "schedule": [],
+      "statistics": {
+        "totalSessions": 20,
+        "totalMinutes": 900,
+        "mostTrainedMuscleGroup": "Back",
+        "averageSessionsPerWeek": 4
+      },
+      "personalNotes": []
+    }
+  },
+  {
+    "name": "Adcha",
+    "email": "Adcha@mail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Adcha",
+      "age": "22",
+      "gender": "Female",
+      "weight": "60",
+      "height": "168",
+      "experience": "Beginner",
+      "trainingGoals": [
+        { "title": "Run 5km", "target": "Under 30 minutes", "deadline": "2026-05-01", "progress": 40 }
+      ],
+      "sessions": [],
+      "progress": {
+        "weightHistory": [],
+        "strengthHistory": [],
+        "cardioHistory": [
+          { "date": "2025-02-10", "distance": 5, "time": 32 }
+        ]
+      },
+      "achievements": ["First 5km session"],
+      "schedule": [],
+      "statistics": {
+        "totalSessions": 8,
+        "totalMinutes": 320,
+        "mostTrainedMuscleGroup": "Legs",
+        "averageSessionsPerWeek": 2
+      },
+      "personalNotes": []
+    }
+  },
+  {
+    "name": "Jordan",
+    "email": "Jordan@mail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Jordan",
+      "age": "24",
+      "gender": "Male",
+      "weight": "90",
+      "height": "190",
+      "experience": "Intermediate",
+      "trainingGoals": [
+        { "title": "Build Muscle", "target": "+5kg Muscle Mass", "deadline": "2026-09-01", "progress": 30 }
+      ],
+      "sessions": [],
+      "progress": {
+        "weightHistory": [],
+        "strengthHistory": [],
+        "cardioHistory": []
+      },
+      "achievements": [],
+      "schedule": [],
+      "statistics": {
+        "totalSessions": 15,
+        "totalMinutes": 700,
+        "mostTrainedMuscleGroup": "Shoulders",
+        "averageSessionsPerWeek": 3
+      },
+      "personalNotes": []
+    }
+  },
+  {
+    "name": "Niklas",
+    "email": "Niklas@mail.com",
+    "password": "1234",
+    "profile": {
+      "name": "Niklas",
+      "age": "23",
+      "gender": "Male",
+      "weight": "82",
+      "height": "182",
+      "experience": "Advanced",
+      "trainingGoals": [
+        { "title": "Compete in Fitness Competition", "target": "2027 Season", "deadline": "2027-06-01", "progress": 10 }
+      ],
+      "sessions": [],
+      "progress": {
+        "weightHistory": [],
+        "strengthHistory": [],
+        "cardioHistory": []
+      },
+      "achievements": ["Trained consistently for 3 years"],
+      "schedule": [],
+      "statistics": {
+        "totalSessions": 25,
+        "totalMinutes": 1200,
+        "mostTrainedMuscleGroup": "Chest",
+        "averageSessionsPerWeek": 5
+      },
+      "personalNotes": []
+    }
+  }
+]

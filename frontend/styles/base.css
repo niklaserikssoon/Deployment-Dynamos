@@ -1,0 +1,61 @@
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* --- Theme Variables --- */
+:root {
+  --bg-main: #ffffff;
+  --bg-card: #f3f4f6;
+  --bg-card-hover: #e5e7eb;
+
+  --text-primary: #111111;
+  --text-secondary: #4b5563;
+
+  --accent: #5a7d7c;
+  --accent-hover: #6f9a98;
+
+  --border-soft: rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  --overlay: rgba(0, 0, 0, 0.15);
+}
+
+/* --- Dark Mode --- */
+html.dark {
+  --bg-main: #0b0c0f;
+  --bg-card: #15161a;
+  --bg-card-hover: #1b1c21;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+  --overlay: rgba(0, 0, 0, 0.6);
+}
+
+/* --- Base Body --- */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+/* --- Utilities --- */
+[hidden] {
+  display: none !important;
+}

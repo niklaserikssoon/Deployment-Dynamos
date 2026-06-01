@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+      name="description"
+      content="Generate personalized workouts, track exercises, and start your fitness journey with our interactive workout app."
+  />
+  <title>Log in / Register</title>
+  <link rel="stylesheet" href="../styles/login.css">
+</head>
+
+<body>
+
+  <!-- VÄNSTER PANEL -->
+  <aside class="auth-aside">
+    <div>
+      <h1>Gym Tracker</h1>
+      <p>Track your training. Set goals. See your progress.</p>
+    </div>
+  </aside>
+
+  <!-- HÖGER PANEL -->
+  <main class="auth-main" aria-labelledby="auth-heading">
+    <section class="auth-card" aria-labelledby="auth-heading">
+
+      <header>
+        <h2 id="auth-heading">Welcome</h2>
+
+        <!-- FLIKAR -->
+        <nav aria-label="Autentisering" role="tablist">
+          <button
+            id="tab-register"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-register"
+            type="button">
+            Register
+          </button>
+
+          <button
+            id="tab-login"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-login"
+            type="button">
+            Log in
+          </button>
+        </nav>
+      </header>
+
+      <!-- REGISTER -->
+      <section id="panel-register"
+               role="tabpanel"
+               aria-labelledby="tab-register">
+
+        <form id="registerForm">
+
+          <label for="registerName">Name</label>
+          <input id="registerName" name="name" required>
+
+          <label for="registerPassword">Password</label>
+          <input id="registerPassword" name="password" type="password" required>
+
+          <label for="registerEmail">Email</label>
+          <input id="registerEmail" name="email" type="email" required>
+
+          <output id="registerMessage"></output>
+
+          <button type="submit">Register</button>
+        </form>
+      </section>
+
+      <!-- LOGIN -->
+      <section id="panel-login"
+               role="tabpanel"
+               aria-labelledby="tab-login"
+               hidden>
+
+        <form id="loginForm">
+
+          <label for="loginName">Name</label>
+          <input id="loginName" name="name" required>
+
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" name="password" type="password" required>
+
+          <output id="loginMessage"></output>
+
+          <button type="submit">Log in</button>
+        </form>
+      </section>
+
+    </section>
+  </main>
+
+  <script type="module" src="../scripts/ui/login.js"></script>
+</body>
+</html>

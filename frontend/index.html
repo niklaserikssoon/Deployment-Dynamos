@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Generate personalized workouts, track exercises, and start your fitness journey with our interactive workout app."
+    />
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#22c55e" />
+    <!-- App installation -->
+
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/side-panel.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Offline installation for web -->
+    <meta name="theme-color" content="#0a7cff" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="./assets/gymHero_1280.webp"
+      media="(min-width: 769px)"
+    />
+
+    <title>Syntax Squad Workout App</title>
+  </head>
+
+  <body class="drawer-right">
+
+    <!-- Mobile menu toggle -->
+    <button
+      id="menu-toggle"
+      aria-label="Open menu"
+      class="menu-toggle"
+      aria-expanded="false"
+    >
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </button>
+
+    <!-- Side navigation panel -->
+    <nav id="side-panel" class="side-panel" aria-hidden="true">
+      <div class="side-panel-content">
+
+        <ul class="side-panel-list">
+
+          <!-- USER STATUS (correct position) -->
+          <li class="side-user-wrapper">
+            <p id="side-auth-status" class="auth-status"></p>
+          </li>
+          <li><button data-nav="profile" class="profile-btn" hidden>My Profile</button></li>   
+          <li>
+            <input
+              type="search"
+              id="side-panel-search"
+              placeholder="Search exercises…"
+              aria-label="Search exercises"
+            />
+          </li>
+
+          <li><button data-nav="search-exercises">Search Exercises</button></li>
+          <li><button data-nav="show-exercises">Show Exercises</button></li>
+
+          <!-- These will dynamically change to Log Out -->
+          <li><button data-nav="log-in">Log In</button></li>
+          <li><button data-nav="register">Register</button></li>
+
+        </ul>
+      </div>
+
+      <button
+        id="theme-toggle"
+        class="theme-toggle-btn"
+        aria-label="Toggle dark mode"
+      >
+        <span class="theme-icon"></span>
+      </button>
+    </nav>
+
+    <!-- Backdrop (only one) -->
+    <div id="side-panel-backdrop"></div>
+
+    <!-- HEADER -->
+    <header>
+      <h1>SYNTAX SQUAD WORKOUT APP</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a id="nav-link-home" href="./index.html#home">Home</a></li>
+          <li><a id="nav-link-exbank" href="./src/exerciseBank.html">Exercise Bank</a></li>
+          <li><a id="nav-link-about" href="./index.html#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="app-root" id="home">
+      <section class="hero-section">
+        <picture>
+          <source
+            srcset="
+              ./assets/gymHero_480.webp 480w,
+              ./assets/gymHero_768.webp 768w
+            "
+            sizes="100vw"
+            media="(max-width: 768px)"
+            type="image/webp"
+          />
+
+          <img
+            src="./assets/gymHero_1280.webp"
+            srcset="./assets/gymHero_1280.webp 1280w"
+            sizes="1280px"
+            width="1280"
+            height="853"
+            alt="Gym"
+            class="hero-image"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+
+        <section class="hero-overlay" aria-label="Workout starter">
+          <header class="hero-header">
+            <h2 class="section-heading">Home</h2>
+            <p class="section-subtitle">
+              Welcome to the home page! Explore our workout generator and exercise bank.
+            </p>
+          </header>
+
+          <article class="hero-panel">
+
+            <!-- STEP 1 -->
+            <section id="start-workout" class="card">
+              <h2 class="section-heading">Start Workout</h2>
+              <p class="section-subtitle">Click start to choose how you want to train.</p>
+              <button class="btn-accent" id="start-btn">Start</button>
+            </section>
+
+            <!-- STEP 2 -->
+            <section id="workout-options" class="card" hidden>
+              <h2 class="section-heading">Choose Option</h2>
+              <p class="section-subtitle">Generate a workout or build your own.</p>
+
+              <section class="generate-controls" aria-label="Workout options">
+                <button class="btn-accent" id="generate-option">Generate Workout</button>
+                <button class="btn-secondary" id="custom-option">Create Your Own</button>
+              </section>
+
+              <button class="btn-secondary" id="options-back-btn">⬅ Back</button>
+            </section>
+
+            <!-- STEP 3A -->
+            <section id="generate-workout" class="card" hidden>
+              <h2 class="section-heading">Generate Workout</h2>
+              <p class="section-subtitle">Select a muscle group and generate a random workout</p>
+
+              <section class="generate-controls" aria-label="Generator controls">
+                <label class="sr-only" for="workout-input">Muscle group</label>
+                <input type="text" id="workout-input" placeholder="Example: Hamstrings" />
+                <button class="btn-accent" id="generate-btn">Generate</button>
+              </section>
+
+              <ul id="workout-list" aria-label="Generated random workout list"></ul>
+
+              <button class="btn-secondary" id="generate-back-btn">⬅ Back</button>
+            </section>
+
+            <!-- STEP 3B -->
+            <section id="custom-workout-section" class="card" hidden>
+              <h2 class="section-heading">Create Your Own Workout</h2>
+
+              <form id="custom-workout-form">
+                <label for="exercise-name">Exercise Name</label>
+                <input type="text" id="exercise-name" placeholder="Example: Squats" required />
+
+                <label for="sets">Sets</label>
+                <input type="number" id="sets" min="1" required />
+
+                <label for="reps">Reps</label>
+                <input type="number" id="reps" min="1" required />
+
+                <button class="btn-accent" type="submit">Add Workout</button>
+              </form>
+
+              <h3 class="subheading">Saved Workouts</h3>
+              <ul id="custom-workout-list" class="features-list">
+                <li class="empty-state">No workouts yet</li>
+              </ul>
+
+              <button class="btn-secondary" id="clear-workouts-btn">Clear Workouts</button>
+              <button class="btn-secondary" id="custom-back-btn">⬅ Back</button>
+            </section>
+
+          </article>
+        </section>
+      </section>
+
+      <section class="container" id="about">
+        <h2 class="section-heading">About This App</h2>
+        <p class="section-subtitle">
+          This app helps you generate and manage workout routines. You can choose from a variety of exercises and create custom workouts.
+        </p>
+
+        <h3 class="subheading">Features:</h3>
+        <ul class="features-list">
+          <li>Generate random workouts based on muscle groups.</li>
+          <li>Create and save your own workout routines.</li>
+          <li>Access a comprehensive exercise bank.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Workout App. All rights reserved.</p>
+      <ul class="footer-links">
+        <li>
+          <a id="nav-link" href="https://github.com/niklaserikssoon/SQ-workoutapp">Github</a>
+        </li>
+        <li><a id="nav-link" href="exerciseBank.html">LinkedIN</a></li>
+      </ul>
+
+        <!-- Offline installation -->
+       <button id="install-btn" class="btn-secondary" hidden aria-label="Install app">
+        Install app
+      </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/side-panel.js"></script>
+    <script src="../scripts/theme.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(() => console.log('Service worker registered'))
+            .catch((err) => console.error('Service worker failed: ', err));
+        });
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Bank</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles/base.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/side-panel.css" />
+  </head>
+
+  <body class="drawer-right page-exercise-bank">
+
+    <!-- Mobile menu toggle -->
+    <button
+      id="menu-toggle"
+      aria-label="Open menu"
+      class="menu-toggle"
+      aria-expanded="false"
+    >
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </button>
+
+    <!-- Side navigation panel -->
+    <nav id="side-panel" class="side-panel" aria-hidden="true">
+      <div class="side-panel-content">
+
+        <ul class="side-panel-list">
+
+          <!-- USER STATUS (correct position) -->
+          <li class="side-user-wrapper">
+            <p id="side-auth-status" class="auth-status"></p>
+          </li>
+          <li><button data-nav="profile" class="profile-btn" hidden>My Profile</button></li>
+          <li>
+            <input
+              type="search"
+              id="side-panel-search"
+              placeholder="Search exercises…"
+              aria-label="Search exercises"
+            />
+          </li>
+
+          <li><button data-nav="search-exercises">Search Exercises</button></li>
+          <li><button data-nav="show-exercises">Show Exercises</button></li>
+
+          <!-- These will dynamically change to Log Out -->
+          <li><button data-nav="log-in">Log In</button></li>
+          <li><button data-nav="register">Register</button></li>
+
+        </ul>
+      </div>
+
+      <button
+        id="theme-toggle"
+        class="theme-toggle-btn"
+        aria-label="Toggle dark mode"
+      >
+        <span class="theme-icon"></span>
+      </button>
+    </nav>
+
+    <!-- Backdrop (only ONE, correct) -->
+    <div id="side-panel-backdrop"></div>
+
+    <!-- Header -->
+    <header>
+      <h1>EXERCISE BANK</h1>
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a id="nav-link" href="../index.html#home">Home</a></li>
+          <li><a id="nav-link" href="./exerciseBank.html">Exercise Bank</a></li>
+          <li><a id="nav-link" href="../index.html#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+
+      <!-- Search bar -->
+      <section class="search-section">
+        <label for="exercise-search" class="visually-hidden">Search exercises</label>
+        <input
+          type="text"
+          id="exercise-search"
+          placeholder="Search for exercises..."
+        />
+        <button class="btn-accent" id="search-button">Search</button>
+      </section>
+
+      <!-- Display workouts -->
+      <section id="workout-display"></section>
+
+      <!-- Exercise modal -->
+      <dialog id="exercise-modal">
+        <article class="exercise-modal-content">
+          <button id="modal-close" aria-label="Close modal">✕</button>
+          <h2 id="modal-title"></h2>
+          <img id="modal-image" alt="" />
+          <p id="modal-overview"></p>
+          <h3>Instructions</h3>
+          <ol id="modal-instructions"></ol>
+        </article>
+      </dialog>
+
+      <button id="show-exercises" class="btn-accent">Show exercises</button>
+
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/main.js"></script>
+    <script src="../scripts/side-panel.js"></script>
+    <script src="../scripts/theme.js"></script>
+
+  </body>
+</html>
