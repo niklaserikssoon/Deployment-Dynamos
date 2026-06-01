@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Threading.RateLimiting;
+using workoutapp_API.ExceptionMiddleware;
+using workoutapp_API.services.AI;
 using workoutapp_API.services.Exercises;
 using workoutapp_API.services.External;
 using System.Text;
@@ -40,6 +42,9 @@ builder.Services.AddHttpClient<IExternalExercise, ExternalExercise>(client =>
 // Local exercise service & save exercise service
 builder.Services.AddScoped<IExerciseService, ExerciseService>();
 builder.Services.AddScoped<ISaveExerciseService, SaveExerciseService>();
+
+// AI plan service
+builder.Services.AddScoped<IAiPlanService, AiPlanService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -189,6 +194,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseRateLimiter();
