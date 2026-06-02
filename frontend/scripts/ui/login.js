@@ -6,7 +6,7 @@ import {
     isProfileEmpty
 } from "../storage/profileStorage.js";
 
-const USER_API = 'https://localhost:7001/api/v1/user';
+const USER_API = `${CONFIG.userApiUrl}api/v1/user`;
 
 async function fetchJwtToken(name, password) {
     try {

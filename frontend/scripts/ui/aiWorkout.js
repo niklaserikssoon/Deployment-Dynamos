@@ -1,4 +1,5 @@
-const API_URL = 'https://localhost:7002/api/v1/ai/generate-plan';
+const API_URL = `${CONFIG.workoutApiUrl}api/v1/ai/generate-plan`;
+
 
 const btn = document.getElementById('ai-btn');
 
