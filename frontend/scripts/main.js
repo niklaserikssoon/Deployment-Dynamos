@@ -2,6 +2,7 @@
 //import { renderList } from './ui/generateWorkout.js'
 //import { displayExercises } from './ui/exercise-bank.js'
 import { initSearch } from './logic/search.js'
+import './ui/aiWorkout.js'
 //import { initCreateForm } from './createItem.js'
 
 // Storage actions
@@ -262,7 +263,7 @@ button?.addEventListener("click", async () => {
 const startSection = document.getElementById("start-workout");
 const optionsSection = document.getElementById("workout-options");
 const generateSection = document.getElementById("generate-workout");
-const customSection = document.getElementById("custom-workout");
+const customSection = document.getElementById("custom-workout-section");
 
 document.getElementById("start-btn")?.addEventListener("click", () => {
   startSection.hidden = true;
@@ -272,11 +273,6 @@ document.getElementById("start-btn")?.addEventListener("click", () => {
 document.getElementById("generate-option")?.addEventListener("click", () => {
   optionsSection.hidden = true;
   generateSection.hidden = false;
-});
-
-document.getElementById("custom-option")?.addEventListener("click", () => {
-  optionsSection.hidden = true;
-  customSection.hidden = false;
 });
 
 // Back buttons

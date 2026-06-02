@@ -1,10 +1,41 @@
-import { 
-    login, 
-    registerUser, 
-    seedUsers, 
-    getProfile, 
-    isProfileEmpty 
+import {
+    login,
+    registerUser,
+    seedUsers,
+    getProfile,
+    isProfileEmpty
 } from "../storage/profileStorage.js";
+
+const USER_API = 'https://localhost:7001/api/v1/user';
+
+async function fetchJwtToken(name, password) {
+    try {
+        const res = await fetch(`${USER_API}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ UserName: name, Password: password })
+        });
+        if (res.ok) {
+            const data = await res.json();
+            localStorage.setItem('jwt_token', data.token);
+        }
+    } catch {
+        // Backend unavailable — AI features require backend login
+    }
+}
+
+async function registerInBackend(name, password, email) {
+    try {
+        await fetch(`${USER_API}/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ UserName: name, FirstName: name, LastName: name, Email: email, Password: password })
+        });
+        await fetchJwtToken(name, password);
+    } catch {
+        // Backend unavailable
+    }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
     await seedUsers();
@@ -66,34 +97,59 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // LOGIN
     if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             if (loginMessage) loginMessage.textContent = "";
 
             const name = loginForm.name?.value?.trim() || "";
             const password = loginForm.password?.value || "";
 
+            // Try backend login first
+            let backendAvailable = false;
             try {
-                login(name, password);
+                const res = await fetch(`${USER_API}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ UserName: name, Password: password })
+                });
+                backendAvailable = true;
 
-                const profile = getProfile();
-
-                if (isProfileEmpty(profile)) {
-                    window.location.href = paths.profile;
-                } else {
+                if (res.ok) {
+                    const data = await res.json();
+                    localStorage.setItem('jwt_token', data.token);
+                    localStorage.setItem('currentUser', name);
                     window.location.href = paths.index;
+                    return;
                 }
 
-            } catch (err) {
-                if (loginMessage) loginMessage.textContent = err.message || String(err);
-                else console.error(err);
+                // Backend up but rejected credentials
+                const err = await res.json().catch(() => ({}));
+                if (loginMessage) loginMessage.textContent = err.message || "Wrong name or password.";
+                return;
+
+            } catch {
+                // Backend unreachable — fall through to local login
+            }
+
+            if (!backendAvailable) {
+                try {
+                    login(name, password);
+                    const profile = getProfile();
+                    if (isProfileEmpty(profile)) {
+                        window.location.href = paths.profile;
+                    } else {
+                        window.location.href = paths.index;
+                    }
+                } catch (err) {
+                    if (loginMessage) loginMessage.textContent = err.message || String(err);
+                }
             }
         });
     }
 
     // REGISTER
     if (registerForm) {
-        registerForm.addEventListener("submit", (e) => {
+        registerForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             if (registerMessage) registerMessage.textContent = "";
 
@@ -103,8 +159,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             try {
                 registerUser(name, password, email);
-
                 login(name, password);
+                await registerInBackend(name, password, email);
 
                 const profile = getProfile();
                 if (isProfileEmpty(profile)) {

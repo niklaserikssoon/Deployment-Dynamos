@@ -138,6 +138,8 @@
               <h2 class="section-heading">Start Workout</h2>
               <p class="section-subtitle">Click start to choose how you want to train.</p>
               <button class="btn-accent" id="start-btn">Start</button>
+              <button class="btn-accent" id="ai-btn">AI-workout</button>
+
             </section>
 
             <!-- STEP 2 -->
@@ -234,16 +236,6 @@
     <script src="../scripts/theme.js"></script>
     <script type="module" src="../scripts/main.js"></script>
 
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker
-            .register('/service-worker.js')
-            .then(() => console.log('Service worker registered'))
-            .catch((err) => console.error('Service worker failed: ', err));
-        });
-      }
-    </script>
 
   </body>
 </html>
